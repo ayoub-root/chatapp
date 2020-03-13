@@ -26,6 +26,7 @@ namespace chatapp
             // c1.wait_msg("chat/ddd");
             c1.send_msg("chat/ddd", "roote");
 
+
             Application.Run(fr);
          
            
