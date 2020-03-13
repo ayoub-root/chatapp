@@ -28,7 +28,10 @@ namespace chatapp
         {
             listView1.Items.Add(myString);
             TabPage p = new TabPage(myString);
-            p.Controls.Add(new chat());
+            p.Name = "page" + myString;
+            chat ch = new chat();
+            ch.Name = "chat" + myString;
+            p.Controls.Add(ch);
             tabControl1.Controls.Add(p); 
             tabs.Add(p);
             
@@ -37,8 +40,13 @@ namespace chatapp
 
         public void getnewmsg(string myString)
         {
-          Console.WriteLine(myString + " sssqqqdddddddd");
-          //  tabControl1.Controls.Add(p);
+           chat a =tabControl1.TabPages[0].Controls;
+            
+                MessageBox.Show(a.richTextBox1.Text=myString);
+            
+            //tabControl1.TabPages[0].Controls;//.Controls["chat"+myString].Controls["richTextBox1"].Text =myString;
+            //Console.WriteLine( tabControl1.TabPages[0].Controls.ToString()) ;
+            //  tabControl1.Controls.Add(p);
         }
         private void button1_Click(object sender, EventArgs e)
         {
