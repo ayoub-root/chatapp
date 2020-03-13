@@ -30,6 +30,7 @@ namespace chatapp
             connection c1 = new connection(f);
             c1.connect("rootq");
             c1.send_msg("chat/dddd",textBox1.Text );
+
         }
 
         private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
