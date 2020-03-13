@@ -12,8 +12,11 @@ namespace chatapp
 {
     public partial class chat : UserControl
     {
-        public chat()
+      public  Form1 f;
+        public chat( Form1 ff)
         {
+            this.f = ff;
+            
             InitializeComponent();
         }
 
@@ -24,7 +27,9 @@ namespace chatapp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = textBox1.Text;
+            connection c1 = new connection(f);
+            c1.connect("rootq");
+            c1.send_msg("chat/dddd",textBox1.Text );
         }
 
         private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)

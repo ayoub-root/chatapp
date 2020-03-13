@@ -21,8 +21,8 @@ namespace chatapp
 
             string a =  "chat/listchat" ;
             c1.wait_msg(a);
-            c1.send_msg(a,"zzkkz");
-            c1.send_msg(a, "aaaa");
+            c1.send_msg(a,"bbbb");
+            //c1.send_msg(a, "aaaa");
             // c1.wait_msg("chat/ddd");
             c1.send_msg("chat/ddd", "roote");
 
