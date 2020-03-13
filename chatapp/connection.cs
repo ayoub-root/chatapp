@@ -13,7 +13,7 @@ namespace chatapp
         Form1 fr;
        
         public connection(Form1 a) { this.fr = a; }
-       public  List<string> a = new List<string>();
+      // public  List<string> a = new List<string>();
         static string BrokerAddress = "broker.mqttdashboard.com";// "test.mosquitto.org";
 
         MqttClient client = new MqttClient(BrokerAddress);
@@ -28,15 +28,15 @@ namespace chatapp
 
         public void send_msg(string to, string msg)
         {
-            client.Publish(to, Encoding.UTF8.GetBytes(msg), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
-            Console.WriteLine(client.ClientId);
+            client.Publish(to, Encoding.UTF8.GetBytes(msg), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+           // Console.WriteLine(client.ClientId);
 
         }
         public void wait_msg(string from)
         {
-             client.Subscribe(new string[] { from }, new byte[] { 2 });
+             client.Subscribe(new string[] { "chat/#" }, new byte[] { 2 });
            client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
-            Console.WriteLine(client.ClientId);
+          //  Console.WriteLine(client.ClientId);
        
            
         }
@@ -50,15 +50,16 @@ namespace chatapp
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
-            if (e.Topic.Equals("list")) {
+            if (e.Topic.Equals("chat/listchat")) {
 
                 fr.Invoke( fr.myDelegate, new object[] { ReceivedMessage});
-                //  this.fr.Invoke(delegate  {
-             //   fr.listView1.Items.Add(ReceivedMessage);
-                //}) ;
-               // fr.listView1.Update();
+             
                 }
-            Console.WriteLine(ReceivedMessage + " hhhhhhhhhh ");
+            else
+            {
+                fr.Invoke(fr.myDelegatemsg, new object[] { ReceivedMessage });
+            }
+            //Console.WriteLine(ReceivedMessage + " hhhhhhhhhh ");
             
            
 

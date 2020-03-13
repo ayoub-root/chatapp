@@ -24,7 +24,7 @@ namespace chatapp
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            richTextBox1.Text = textBox1.Text;
         }
 
         private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)

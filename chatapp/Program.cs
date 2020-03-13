@@ -19,9 +19,12 @@ namespace chatapp
            connection c1 = new connection(fr);
             c1.connect("rootq");
 
-            string a =  "list" ;
+            string a =  "chat/listchat" ;
             c1.wait_msg(a);
-            c1.send_msg(a,"root");
+            c1.send_msg(a,"zzkkz");
+           // c1.wait_msg("chat/ddd");
+            c1.send_msg("chat/ddd", "roote");
+
             Application.Run(fr);
          
            

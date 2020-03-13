@@ -13,21 +13,33 @@ namespace chatapp
     {
         public delegate void AddListItem(String myString);
         public AddListItem myDelegate;
+
+        public delegate void getmsg(String myString);
+        public getmsg myDelegatemsg;
         public Form1()
         {
             InitializeComponent();
             //listView1.Items.Add("google");
             myDelegate = new AddListItem(AddListItemMethod);
+            myDelegatemsg = new getmsg(getnewmsg);
         }
-
+        List<TabPage> tabs = new List<TabPage>();
         public void AddListItemMethod(string myString)
         {
             listView1.Items.Add(myString);
             TabPage p = new TabPage(myString);
             p.Controls.Add(new chat());
-            tabControl1.Controls.Add(p);
+            tabControl1.Controls.Add(p); 
+            tabs.Add(p);
+            
+           
         }
 
+        public void getnewmsg(string myString)
+        {
+          Console.WriteLine(myString + " sssqqqdddddddd");
+          //  tabControl1.Controls.Add(p);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
