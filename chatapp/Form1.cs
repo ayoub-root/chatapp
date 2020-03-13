@@ -40,7 +40,7 @@ namespace chatapp
 
         public void getnewmsg(string myString)
         {
-           chat a =tabControl1.TabPages[0].Controls;
+           chat a =(UserControl)tabControl1.TabPages[0].Controls;
             
                 MessageBox.Show(a.richTextBox1.Text=myString);
             
